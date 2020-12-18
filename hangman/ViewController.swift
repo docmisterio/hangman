@@ -4,6 +4,8 @@ class ViewController: UIViewController {
     let buttonsView = UIView()
     let wordGuessView = UITextField()
     var letterButtons = [UIButton]()
+    let button = UIButton()
+    let alphabet = "abcdefghijklmnopqrstuvwxyz"
     
     
     override func loadView() {
@@ -14,23 +16,26 @@ class ViewController: UIViewController {
         buttonsView.layer.cornerRadius = 25
         view.addSubview(buttonsView)
         
-        let width = 61
-        let height = 100
+        let width = 75
+        let height = 75
         
-        for row in 0..<2 {
-            for column in 0..<13 {
-                let button = UIButton()
+        for row in 0..<3 {
+            for column in 0..<12 {
                 let frame = CGRect(x: column * width, y: row * height, width: width, height: height)
-                
+
                 button.frame = frame
-                button.setTitle("A", for: .normal)
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 36)
-                button.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
-                
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 44)
+                button.setTitle("W", for: .normal)
+//                button.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
+
                 buttonsView.addSubview(button)
                 letterButtons.append(button)
             }
         }
+        
+//        for letter in alphabet {
+//            button.setTitle(String(letter), for: .normal)
+//        }
         
         wordGuessView.translatesAutoresizingMaskIntoConstraints = false
         wordGuessView.isUserInteractionEnabled = false
